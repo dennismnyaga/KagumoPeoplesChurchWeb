@@ -46,11 +46,12 @@ nav{
 .head-st .banner .mot{
     /* font-family: 'Mr Dafoe'; */
     margin: 0;
-    font-size: 1.3em;
+    font-size: 1em;
     margin-top: -0.6em;
+    font-family: poppins;
     /* color: white; */
     /* text-shadow: 0 0 0.05em #fff, 0 0 0.2em #fe05e1, 0 0 0.3em #fe05e1; */
-    transform: rotate(-5deg);
+    /* transform: rotate(-5deg); */
 }
 
 .head-st .banner .ff{
