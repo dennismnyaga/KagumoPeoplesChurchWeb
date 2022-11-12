@@ -86,13 +86,13 @@ header .log .k{
     font-family: 'Courier New', Courier, monospace;
 }
 
-header .log .c{
+/* header .log .c{
     background-color: #340b64;
-    color: #fff;
+    color: #fff; 
     border-radius: 50%;
     font-size: xx-large;
-    padding:2px  5px;
-}
+    padding:2px  5px; 
+} */
 
 
 header .search .form-control{
