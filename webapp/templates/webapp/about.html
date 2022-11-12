@@ -1,0 +1,82 @@
+{% extends 'webapp/layout.html' %}
+{% load static %}
+{% load embed_video_tags %}
+{% block content %}
+<div class="container-fluid sunday-celebration-tit">
+    <h1>About Us</h1>
+</div>
+<div class="container">
+    {% for aboutus in about %}
+    <div id="about" class="about">
+        <div class="container">
+            <div class="row">
+    
+                <div class="col-xl-5 col-lg-5 col-md-5 co-sm-l2">
+                    <div class="about_img">
+                        <figure><img style="border-radius: 10px;" src="{{aboutus.image1URL}}" alt="img" /></figure>
+                    </div>
+                </div>
+              
+                <div class="col-xl-7 col-lg-7 col-md-7 co-sm-l2">
+                    
+                    <div class="about_box">
+                        <h2>{{ aboutus.title }}</h2>
+                        <p>{{ aboutus.decription }}</p>
+                        <figure><img style="border-radius: 10px;" src="{{aboutus.image2URL}}" alt="img" /></figure>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="empty">
+        <h5>Oops! No Content Yet</h5>
+    </div>
+    {% endfor %}
+</div>
+<div class="container another">
+    <h2>“Pray! And listen to God! You can do this alone, but find somebody to do it with you”</h2>
+</div>
+<div class="container-fluid sunday-celebration-tit">
+    <h1>Our Team</h1>
+</div>
+
+<div class="container sunday-celebration">
+    <div class="row">
+        {% for pastor in pastors %}
+            <div class="col-lg-4 ms-1">
+                <div class="card">
+                    <img class="thumbnail" src=" {{pastor.imageURL}}" alt="">
+                    <div class="card-body">
+                       <h3>{{pastor.name}}</h3>
+                       <div class="team">{{pastor.position}}</div>
+                    </div>
+                    <div class="card-footer">
+                        <a href="{{pastor.facebook}}"><i class="icofont-facebook icon"></i></a>
+                        <a href="{{pastor.instagram}}"><i class="icofont-instagram icon"></i></a>
+                        <a href="{{pastor.twitter}}"><i class="icofont-twitter icon"></i></a>
+                        <a href="{{pastor.email}}"><i class="icofont-email"></i></a>
+                    </div>
+                </div>
+                
+                <div class="box-element product">
+                    <!-- <h6><strong>{{spirit.Speaker}}</strong></h6>
+                    <hr> -->
+                    <!-- <p>Lorem ipsum dolor sit amet.</p> -->
+                    <!-- <p>{{spirit.sermon_title}} . {{spirit.date_added|date:'d M Y'}}</p> -->
+                    <!-- <button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button> -->
+                    <!-- <a class="btn btn-outline-success" href="#">View</a> -->
+                    <!-- <h4 style="float: right"><strong>${{product.price|floatformat:2}}</strong></h4> -->
+                </div>
+                
+            </div>
+            {% empty %}
+            <div class="empty">
+                <h5>Oops! No Content Yet</h5>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

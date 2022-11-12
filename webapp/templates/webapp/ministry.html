@@ -1,0 +1,42 @@
+{% extends 'webapp/layout.html' %}
+{% load static %}
+{% load embed_video_tags %}
+{% block content %}
+<div class="container-fluid sunday-celebration-tit">
+    <h1>{{ministry.ministry_name}}</h1>
+</div>
+
+<div id="about" class="about">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-xl-5 col-lg-5 col-md-5 co-sm-l2">
+                <div class="about_img">
+                    <figure><img style="border-radius: 10px;" src="{{ministry.imageURL}}" alt="img" /></figure>
+                </div>
+                
+            </div>
+          
+            <div class="col-xl-7 col-lg-7 col-md-7 co-sm-l2">
+                
+                <div class="about_box">
+                    <h2>{{ ministry.ministry_name }}</h2>
+                    <p>{{ ministry.decription }}</p>
+                    <!-- <figure><img style="border-radius: 10px;" src="{{ministry.team_leader_imageURL}}" alt="img" /></figure> -->
+                </div>
+                
+            </div>
+        </div>
+        <div class="you mt-3">
+            
+                {% video ministry.latest_yt as my_video %}
+                    {% video my_video '100% x 100%' %}
+                {% endvideo %}
+            
+        </div>
+    </div>
+</div>
+
+
+</div>
+{% endblock content %}

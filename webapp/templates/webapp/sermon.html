@@ -1,0 +1,96 @@
+{% extends 'webapp/layout.html' %}
+{% load static %}
+{% load embed_video_tags %}
+{% block content %}
+    <div class="container more-sermon-details">
+        <div class="top-bar">
+            <div class="searchtit">
+                <h1>Sermons</h1>
+            </div>
+            
+            <div class="searchbox">
+                <div class="search">
+                    <form action="">
+                        <input type="text" placeholder="Search...">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="speaker">
+                    <h2 style="font-size: larger; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Speakers</h2>
+                </div>
+                <div class="contbody">
+                    
+                    
+                    <div class="pastors">
+                        {% for speaker in dist %}
+                        <ul>
+                            <li><a href="">{{speaker.Speaker}}</a></li>
+                        </ul>
+                        {% empty %}
+                            <div class="empty">
+                                <h5>Oops! No Content Yet</h5>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <hr>
+                    <div class="series">
+                        <h2 style="font-size: larger; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Series</h2>
+                        
+                        <div class="pastors">
+                            {% for year in dist %}
+                            <ul>
+                                <li><a href="">{{year.date_added|date:'Y'}}</a></li>
+                            </ul>
+                            {% empty %}
+                                <div class="empty">
+                                    <h5>Oops! No Content Yet</h5>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 sermon-cards">
+             <div class="row">
+                {% for sam in sermons_obj %}
+                <div class="col-4">
+                <a href="{% url 'webapp:sermon' sam.id %}">
+                    <div class="card">
+                        <img class="card-img-top" src="{{sam.imageURL}}" alt="">
+                        <div class="card-body">
+                            <h5 class="card-title">{{sam.sermon_title}}</h5>
+                            <p class="card-text">{{sam.Speaker}}</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% empty %}
+            <div class="empty">
+                <h5>Oops! No Content Yet</h5>
+            </div>
+                {% endfor %}
+            </div>
+        </div>
+        </div>
+        <div class="den">
+            <span class="step-links">
+            {% if sermons_obj.has_previous %}
+                <a class="btn btn-info" href="?page=1">&laquo; first</a>
+                <a class="btn btn-info" href="?page={{ sermons_obj.previous_page_number }}">previous</a>
+            {% endif %}
+            <span class="current">
+                Page {{ sermons_obj.number }} of {{ sermons_obj.paginator.num_pages }}.
+            </span>
+            {% if sermons_obj.has_next %}
+                <a class="btn btn-info" href="?page={{ sermons_obj.next_page_number }}">next</a>
+                <a class="btn btn-info" href="?page={{ sermons_obj.paginator.num_pages }}">last &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
+    </div>
+{% endblock %}

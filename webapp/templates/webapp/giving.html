@@ -1,0 +1,146 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KAGUMO PEOPLES CHURCH</title>
+    <link rel="stylesheet" href="{% static 'webapp/css/give.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'webapp/css/bootstrap.min.css'%}">
+    <!-- style css -->
+    
+    
+    <!-- fevicon -->
+    <link rel="stylesheet" href="{% static 'webapp/icofont/icofont.min.css' %}">
+    <link rel="icon" href="{% static 'webapp/images/fevicon.png' %}" type="image/gif" />
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'webapp/css/jquery.mCustomScrollbar.min.css' %}">
+    <!--<link rel="stylesheet" type="text/css" href="css/jquery.mCustomScrollbar.min.css">-->
+    <!-- Tweaks for older IEs-->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+ 
+</head>
+<body>
+
+
+    <div id="wrapper" class="flex flex-col justify-between h-screen">
+
+        
+        <!-- Content-->
+
+        <div>
+            <div class="lg:p-12 max-w-md max-w-xl lg:my-0 my-12 mx-auto p-6 space-y-">
+                <div class="ministry-logo">
+                    <h1 class="lg:text-3xl text-xl font-semibold mb-6 logo"> KPC</h1>
+                    <div class="logo-des">
+                        <h5 class="description">Kagumo Peoples Church - Online Giving</h5>
+                        <p class="ml-0 pl-0 by">BY KAGUMO PEOPLES CHURCH MINISTRY</p>
+                    </div>
+                </div>
+
+
+                <form action="/login" method="post">
+                    <input type="hidden" name="csrfmiddlewaretoken" value="rBZCng998fLdLTIxUftlFQw4JV0OoNfaCqutdDH9SB8XkyvZh1zVlGRnccQRUBZH">
+                    <label for="firstname">First Name:</label>
+                    <input type="text" name="firstname" maxlength="20" id="firstname" required="">
+                    <label for="lastname">Last Name:</label>
+                    <input type="text" name="lastname" maxlength="20" id="lastname" required="">
+                    <label for="email">Email:</label>
+                    <input type="text" name="email" maxlength="20" id="email" required="">
+                    <label for="phoneNumber">Phone Number:</label>
+                    <input type="text" name="phoneNumber" maxlength="20" id="phoneNumber" required="">
+                    <label for="reasons_for_giving">Reasons for Giving:</label>
+                    <input type="text" name="reasons_for_giving" maxlength="20" id="reasons_for_giving" required="">
+                    <label for="give_in_currency">Currency:</label>
+                    <input type="text" name="give_in_currency" maxlength="20" id="give_in_currency" required="">
+                    <label for="amount">Amount:</label>
+                    <input type="text" name="amount" maxlength="20" id="amount" required="">
+
+                    
+                
+                    <input type="submit" value="Give">
+                </form>
+                <!--<p class="mb-2 text-black text-lg"> Register to manage your account </p>-->
+                
+            </div>
+        </div>
+        
+        <!-- Footer -->
+
+        <div class="lg:mb-5 py-3 uk-link-reset">
+            <div class="flex flex-col items-center justify-between lg:flex-row max-w-6xl mx-auto lg:space-y-0 space-y-3">
+                <div class="flex space-x-2 text-gray-700 uppercase">
+                    <a href="#"> About</a>
+                    <a href="#"> Help</a>
+                    <a href="#"> Terms</a>
+                    <a href="#"> Privacy</a>
+                </div>
+                <p class="capitalize"> © copyright 2020 by socol</p>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <script src="https://www.paypal.com/sdk/js?client-id=&currency=USD"></script>
+	<script>
+        // Render the PayPal button into #paypal-button-container
+		var total = '{{order.get_cart_total}}'
+        paypal.Buttons({
+			style:{
+				color: 'blue',
+				shape: 'rect',
+			},
+
+            // Set up the transaction
+            createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: parseFloat(total).toFixed(2)
+                        }
+                    }]
+                });
+            },
+
+            // Finalize the transaction
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(orderData) {
+                    // Successful capture! For demo purposes:
+                    console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+                    var transaction = orderData.purchase_units[0].payments.captures[0];
+                    // alert('Transaction '+ transaction.status + ': ' + transaction.id + '\n\nSee console for all available details');
+					submitFormData()
+                    // Replace the above to show a success message within this page, e.g.
+                    // const element = document.getElementById('paypal-button-container');
+                    // element.innerHTML = '';
+                    // element.innerHTML = '<h3>Thank you for your payment!</h3>';
+                    // Or go to another URL:  actions.redirect('thank_you.html');
+                });
+            }
+
+
+        }).render('#paypal-button-container');
+    </script>
+
+
+
+<script type="text/javascript" src="{% static 'webapp/js/scripts.js' %}"></script>
+<!-- end clock -->
+<!-- Javascript files-->
+<script type="text/javascript" src="{% static 'webapp/js/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'webapp/js/popper.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'webapp/js/bootstrap.bundle.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'webapp/js/jquery-3.0.0.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'webapp/js/plugin.js' %}"></script>
+<!-- sidebar -->
+<script type="text/javascript" src="{% static 'webapp/js/jquery.mCustomScrollbar.concat.min.js'%}"></script>
+<script type="text/javascript" src="{% static 'webapp/js/custom.js' %}"></script>
+<script type="text/javascript" src="{% static 'webapp/js/app.js' %}"></script>
+</body>
+</html>

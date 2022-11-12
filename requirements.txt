@@ -1,0 +1,16 @@
+asgiref
+certifi
+charset-normalizer
+dj-database-url
+Django
+django-embed-video
+django-heroku
+gunicorn
+idna
+Pillow
+psycopg2
+requests
+sqlparse
+tzdata
+urllib3
+whitenoise

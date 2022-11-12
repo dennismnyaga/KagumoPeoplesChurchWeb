@@ -1,0 +1,84 @@
+{% extends 'webapp/layout.html' %}
+{% load static %}
+{% load embed_video_tags %}
+{% block content %}
+<div class="container-fluid fluider">
+    <div class="container">
+        <div class="you">
+            {% video sermons.video_url as my_video %}
+                {% video my_video '100% x 100%' %}
+            {% endvideo %}
+        </div>
+        <div class="share">
+            <div class="sermontitle">
+                <h3>{{sermons.sermon_title}} <h1>.</h1></h3>
+                <small>
+                    <span class="bold">{{sermons.Speaker}} .</span>
+                    <span>{{sermons.date_added|date:'M d, Y'}}</span>
+                </small>
+            </div>
+            <div class="links">
+                <a href="">
+                    <div class="flex flex-column">
+                        <i class="icofont-bell-alt"></i>
+                        <small>Subscribe</small>
+                    </div>
+                </a>
+                <a href="">
+                    <div class="flex flex-column">
+                        <i class="icofont-money"></i>
+                        <small>Giving</small>
+                    </div>
+                </a>
+                <a href="">
+                    <div class="flex flex-column">
+                        <i class="icofont-share-alt"></i>
+                        <small>Share</small>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="more-serm">
+    <div class=" main-n">
+        <div class="trendingMovies movies">
+            <h4>Recent Sermons</h4>
+            <div class="cards ml-5">
+                {% for latest in more|slice:4 %}
+                <!-- <a href="{% url 'webapp:sermon' latest.id %}"> -->
+                    <div class="card" data-text="">
+                   
+                            <img src="{{latest.imageURL}}" alt="">
+
+                        <div class="con">
+                            <a style="list-style: none; text-decoration: none; margin: 0; padding: 0;" href="{% url 'webapp:sermon' latest.id %}">
+                            <p class="cla">{{latest.sermon_title}}</p>
+                            </a>
+                            <p class="speak">{{latest.Speaker}}</p>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <div class="empty">
+                        <h5>Oops! No Content Yet</h5>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        
+        <div class="more-sermon-btn">
+            <a class="button-style" style="text-align: center;" href="{% url 'webapp:sermons' %}">
+                <button class="btn btn-danger upp">More Sermons
+                    <i></i>
+                </button>
+            </a>
+    </div>
+    </div>
+</div>
+
+
+
+
+
+{% endblock content %}

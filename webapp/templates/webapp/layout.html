@@ -1,0 +1,159 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kagumo Peoples CHURCH</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="{% static 'webapp/css/lay.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" type="text/css" href="{% static 'webapp/css/style.css' %}">
+</head>
+<body>
+    <header class="py-3 head-st">
+        <div class="container d-flex flex-wrap justify-content-center">
+          <a href="/" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-dark text-decoration-none">
+            <div class="log">
+                <span class="k">K</span>
+                <span class="p">P</span>
+                <span class="c">C</span>
+            </div>
+            <!-- <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/>KPC</svg> -->
+            <div class="banner">
+                <div class="ff">
+                    <span class="fs-4">KAGUMO PEOPLES CHURCH</span>
+                </div>
+                <p class="mot text-sm">TRANSFORMING LIVES</p>
+            </div>
+            
+          </a>
+          <form class="col-12 col-lg-auto mb-3 mb-lg-0 d-flex search">
+            <input type="search" class="form-control" placeholder="Search Sermon" aria-label="Search">
+            <button class="btn btn-outline-info"><span class="material-symbols-outlined">
+                search
+            </span></button>
+            
+          </form>
+        </div>
+      </header>
+      <nav class="navbar navbar-expand-lg navbar-light" aria-label="Twelfth navbar example">
+        <div class="container-fluid nav-con">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample10" aria-controls="navbarsExample10" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+  
+          <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample10">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'webapp:about' %}">About US</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown10" data-bs-toggle="dropdown" aria-expanded="false">Sermons</a>
+                <ul class="dropdown-menu" aria-labelledby="dropdown10">
+                  <li><a class="dropdown-item" href="{% url 'webapp:sunday' %}">Sunday Celebration</a></li>
+                  <li><a class="dropdown-item" href="{% url 'webapp:spirit' %}">Spirit Life</a></li>
+                  <li><a class="dropdown-item" href="{% url 'webapp:prophet' %}">Prophetic Voice</a></li>
+                  <li><a class="dropdown-item" href="{% url 'webapp:grace' %}">Grace Balm</a></li>
+                  <li><a class="dropdown-item" href="{% url 'webapp:praise' %}">Grace Hour</a></li>
+                  <li><a class="dropdown-item" href="{% url 'webapp:voice' %}">Voice of my Spirit</a></li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown10" data-bs-toggle="dropdown" aria-expanded="false">Ministries</a>
+                <ul class="dropdown-menu" aria-labelledby="dropdown10">
+                  <li><a class="dropdown-item" href="#">Worship Team</a></li>
+                  <li><a class="dropdown-item" href="#">Protocal Team</a></li>
+                  <li><a class="dropdown-item" href="#">Security Team</a></li>
+                  <li><a class="dropdown-item" href="#">Courtesy Team</a></li>
+                  <li><a class="dropdown-item" href="#">Ushering Team</a></li>
+                  <li><a class="dropdown-item" href="#">Women Ministry</a></li>
+                  <li><a class="dropdown-item" href="#">Men Ministry</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'webapp:podcast' %}">Podcast</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'webapp:give' %}">Give</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      
+      {% block content %}{% endblock content %}
+
+      <footer>
+        <div class="footer top_layer ">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+                        <div class="address">
+                            <a href="/" style="font-size:30px; color:rgba(137, 207, 152, 0.787);">Kagumo Peoples Church</a><hr style ="height:1px; width:auto; background-color:rgb(19, 88, 19);">
+                            <p> <i>Transforming Lives</i> </p>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+                        <div class="address">
+                            <h3>Bonus Tips</h3>
+                            <ul class="Links_footer">
+                                <li><img src="{% static 'webapp/icon/3.png' %}" alt="#" /> <a href="#">Read The Word</a> </li>
+                                <li><img src="{% static 'webapp/icon/3.png' %}" alt="#" /> <a href="#">Pray</a> </li>
+                                <li><img src="{% static 'webapp/icon/3.png' %}" alt="#" /> <a href="#">Maintain the Word Principles</a> </li>
+                                <!-- <li><img src="icon/3.png" alt="#" /> <a href="#">LearnPress</a> </li>
+                                <li><img src="icon/3.png" alt="#" /> <a href="#">Release Status</a> </li> -->
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+                        <div class="address">
+                            <h3>Subcribe email</h3>
+                            <p>Receive monthly update </p>
+                            <input class="form-control" placeholder="Your Email" type="type" name="Your Email">
+                            <button class="submit-btn">Submit</button>
+                            <a href=""><button class="submit-btn mt-2 bg-dark">Register With Us</button></a>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+                        <div class="address">
+                            <h3>Contact Us</h3>
+
+                            <ul class="loca">
+                                <li>
+                                    <a href="#"><img src="{% static 'webapp/icon/loc.png' %}" alt="#" /></a>Kagumo, Kirinyaga
+                                    <br>Kenya</li>
+                                <li>
+                                    <a href="mailto:thepeopleschurchkagumo@gmail.com"><img src="{% static 'webapp/icon/email.png' %}" alt="#" />  </a>thepeopleschurchkagumo@gmail.com</li>
+                                <li>
+                                    <a href="#"><img src="{% static 'webapp/icon/call.png' %}" alt="#" /></a> +254 7000000000 </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+     
+        <div class="copyright" style="background-image: linear-gradient(to right, #023e8a, #0077b6); height: 10px;">
+            <div class="container">
+                <p>Copyright &copy; <script>document.write(new Date().getFullYear())</script> Designed by Dennis Nyaga</p>
+                <!--<p>© 2021 All Rights Reserved. Design by oess softwares</p>-->
+           
+        </div>
+        </div>
+    </footer>
+
+    <script src="https://open.spotify.com/embed-podcast/iframe-api/v1" async></script>
+    <script type="text/javascript" src="{% static 'webapp/js/pod.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+</body>
+</html>

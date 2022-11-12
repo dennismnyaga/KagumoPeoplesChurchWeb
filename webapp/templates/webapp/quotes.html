@@ -1,0 +1,41 @@
+{% extends 'webapp/layout.html' %}
+{% load static %}
+{% load embed_video_tags %}
+{% block content %}
+<div class="container more-serm more-quotes">
+    <div class=" main-n">
+        <div class="trendingMovies movies">
+            <h4>Quotes</h4>
+            <div class="cards">
+                {% for quotes in quote_obj %}
+               
+                    <div class="card" data-text="">
+                            <img src="{{quotes.imageURL}}" alt="">
+                    </div>
+                    {% empty %}
+                    <div class="empty">
+                        <h5>Oops! No Content Yet</h5>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        
+    </div>
+    <div class="den quote_page">
+        <span class="step-links">
+        {% if quote_obj.has_previous %}
+            <a class="btn btn-info" href="?page=1">&laquo; first</a>
+            <a class="btn btn-info" href="?page={{ quote_obj.previous_page_number }}">previous</a>
+        {% endif %}
+        <span class="current">
+            Page {{ quote_obj.number }} of {{ quote_obj.paginator.num_pages }}.
+        </span>
+        {% if quote_obj.has_next %}
+            <a class="btn btn-info" href="?page={{ quote_obj.next_page_number }}">next</a>
+            <a class="btn btn-info" href="?page={{ quote_obj.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+</div>
+
+{% endblock content %}

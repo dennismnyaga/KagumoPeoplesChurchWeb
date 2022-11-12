@@ -1,0 +1,58 @@
+{% extends 'webapp/layout.html' %}
+{% load static %}
+{% load embed_video_tags %}
+{% block content %}
+
+<div class="container-fluid event-header">
+    <h1>{{events.event_name}}</h1>
+</div>
+<div class="container imager">
+    <img src="{{events.imageURL}}" alt="">
+</div>
+<div class="container event-des">
+<div class="row">
+    <div class="col-md-8">
+      <div class="container">
+          <h3>Event <span>Description</span></h3>
+          <p>{{events.event_description}}</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+        <div class="content-section">
+          <div class="card">
+              <div class="card-header">
+                  <h4>Event Details</h4>
+              </div>
+              <div class="card-body">
+                  <p><strong>Organizer: </strong> <span>{{events.host}}</span></p>
+                  <hr>
+                  <p><strong>Start Date: </strong> <span>{{events.start_date}}</span></p>
+                  <hr>
+                  <p><strong>End Date: </strong> <span>{{events.end_date}}</span></p>
+                  <hr>
+                  <p><strong>Time: </strong> <span>{{events.start_time}}<strong>-</strong>{{events.end_time}}</span></p>
+                  <p><strong>Cost: </strong> <span>{{events.entry_fee}}</span></p>
+                </div>
+          </div>
+          <div class="card">
+              <div class="card-header">
+                  <h4>Event Venue</h4>
+              </div>
+              <div class="card-body">
+                <p><strong>Venue: </strong> <span>{{events.venue}}</span></p>
+                <hr>
+                <p><strong>Location: </strong> <span>{{events.location}}</span></p>
+                <hr>
+                <p><strong>Email: </strong> <span>{{events.email}}</span></p>
+              </div>
+          </div>
+        </div>
+      </div>
+    
+  </div>
+</div>
+<div class="container mapper">
+    <p>{{events.location_codinates}}</p>
+</div>
+
+{%  endblock content%}

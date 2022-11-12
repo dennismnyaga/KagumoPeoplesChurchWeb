@@ -1,0 +1,180 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    
+<head>
+	<title>Register</title>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- mobile metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <!-- site metas -->
+    <title>KPC</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- bootstrap css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'webapp/css/bootstrap.min.css'%}">
+    <!-- style css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'webapp/css/style.css' %}">
+    
+    <!--<link rel="stylesheet" href="css/style.css">-->
+    <!-- Responsive-->
+    <link rel="stylesheet" type="text/css" href="{% static 'webapp/css/responsive.css' %}">
+    <!--<link rel="stylesheet" href="css/responsive.css">-->
+    <!-- fevicon -->
+    <link rel="stylesheet" href="{% static 'webapp/icofont/icofont.min.css' %}">
+    <link rel="icon" href="{% static 'webapp/images/fevicon.png' %}" type="image/gif" />
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'webapp/css/jquery.mCustomScrollbar.min.css' %}">
+    <!--<link rel="stylesheet" type="text/css" href="css/jquery.mCustomScrollbar.min.css">-->
+    <!-- Tweaks for older IEs-->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+    
+	<style>
+		body,
+		html {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			background: hsl(180, 26%, 96%) !important;
+		}
+		.user_card {
+			width: 350px;
+			margin-top: auto;
+			margin-bottom: auto;
+			background:#c0ca86;
+			position: relative;
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			padding: 10px;
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			border-radius: 5px;
+
+		}
+
+		.form_container {
+			margin-top: 20px;
+		}
+
+		#form-title{
+			color: #fff;
+		}
+		.login_btn {
+			width: 100%;
+			background: #33ccff !important;
+			color: white !important;
+		}
+		.login_btn:focus {
+			box-shadow: none !important;
+			outline: 0px !important;
+		}
+		.login_container {
+			padding: 0 2rem;
+		}
+		.input-group-text {
+			background: #f7ba5b !important;
+			color: white !important;
+			border: 0 !important;
+			border-radius: 0.25rem 0 0 0.25rem !important;
+		}
+		.input_user,
+		.input_pass:focus {
+			box-shadow: none !important;
+			outline: 0px !important;
+		}
+
+	</style>
+
+</head>
+<body>
+	<div class="container h-100">
+		<div class="d-flex justify-content-center h-100">
+			<div class="user_card">
+				<div class="d-flex justify-content-center">
+					<h3 id="form-title">REGISTER ACCOUNT</h3>
+				</div>
+				<div class="d-flex justify-content-center form_container">
+
+					<form method="POST" action="">
+                        {% csrf_token %}
+						<div class="input-group mb-3">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="icofont-user-alt-7"></i></span>
+							</div>
+							{{form.username}}
+						</div>
+						<div class="input-group mb-2">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="icofont-email"></i></span>
+							</div>
+							{{form.email}}
+						</div>
+						<div class="input-group mb-2">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="icofont-ui-password"></i></span>
+							</div>
+							{{form.password1}}
+						</div>
+						<div class="input-group mb-2">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="icofont-ui-password"></i></span>
+							</div>
+							{{form.password2}}
+						</div>
+
+				   		<div class="d-flex justify-content-center mt-3 login_container">
+				 			<input class="btn login_btn" type="submit" value="Register Account">
+				   		</div>
+					</form>
+				</div>
+		
+				<div class="mt-4">
+					<div class="d-flex justify-content-center links">
+						Already have an account? <a href="{% url 'usersreg:login' %}" class="ml-2">Login</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+						/* Because i didnt set placeholder values in forms.py they will be set here using vanilla Javascript
+		//We start indexing at one because CSRF_token is considered and input field 
+		 */
+
+		//Query All input fields
+		var form_fields = document.getElementsByTagName('input')
+		form_fields[1].placeholder='Username..';
+		form_fields[2].placeholder='Email..';
+		form_fields[3].placeholder='Enter password...';
+		form_fields[4].placeholder='Re-enter Password...';
+
+
+		for (var field in form_fields){	
+			form_fields[field].className += ' form-control'
+		}
+	</script>
+    <script type="text/javascript" src="{% static 'webapp/js/scripts.js' %}"></script>
+    <!-- end clock -->
+    <!-- Javascript files-->
+    <script type="text/javascript" src="{% static 'webapp/js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'webapp/js/popper.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'webapp/js/bootstrap.bundle.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'webapp/js/jquery-3.0.0.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'webapp/js/plugin.js' %}"></script>
+    <!-- sidebar -->
+    <script type="text/javascript" src="{% static 'webapp/js/jquery.mCustomScrollbar.concat.min.js'%}"></script>
+    <script type="text/javascript" src="{% static 'webapp/js/custom.js' %}"></script>
+    <!-- javascript -->
+    <!-- <script type="text/javascript" src=" {% static 'webapp/js/owl.carousel.js' %}"></script> -->
+    <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+</body>
+</html>

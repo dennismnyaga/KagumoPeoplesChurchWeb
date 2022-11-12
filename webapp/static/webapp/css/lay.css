@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Mr+Dafoe&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo:wght@900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+nav .collapse .navbar-nav .nav-item .nav-link{
+    border-right: 2px solid rgba(255, 255, 255, 0.3);
+   
+}
+nav .collapse .navbar-nav .nav-item a{
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: #94a0b9;
+}
+.navbar {
+    padding-top: 0;
+    padding-bottom: 0;
+    background-color: #8b18a3;
+}
+nav{
+    background-color: #8b18a3;
+}
+.dropdown.dropdown-menu{
+    transition: all 0.5s;
+    overflow: hidden;
+    transform-origin: top center;
+    transform: scale(1,0);
+}
+.dropdown:hover .dropdown-menu{
+    transform: scale(1);
+    display: block;
+    
+}
+
+.head-st .banner .fs-4{
+    font-size: large;
+    font-weight: 700;
+    font-family: 'Courier New', Courier, monospace;
+    word-spacing: -10px;
+}
+
+.head-st .banner .mot{
+    font-family: 'Mr Dafoe';
+    margin: 0;
+    font-size: 1.3em;
+    margin-top: -0.6em;
+    color: white;
+    text-shadow: 0 0 0.05em #fff, 0 0 0.2em #fe05e1, 0 0 0.3em #fe05e1;
+    transform: rotate(-5deg);
+}
+
+.head-st .banner .ff{
+    background: radial-gradient(white 3%, rgba(white, 0.3) 15%, rgba(white, 0.05) 60%, transparent 80%),
+    radial-gradient(rgba(white, 0.2) 50%, transparent 60%) 50% 50% / 5% 100%,
+    radial-gradient(rgba(white, 0.2) 50%, transparent 60%) 50% 50% / 70% 5%;
+  background-repeat: no-repeat;;
+}
+
+.head-st .banner .ff span{
+    background-image: linear-gradient(#032d50 25%, #00a1ef 35%, white 50%, #20125f 50%, #8313e7 55%, #ff61af 75%);
+    -webkit-text-stroke: 0.01em #94a0b9;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+header{
+    background-color: #ffffff;
+}
+
+header .log{
+    margin-right: 1rem;
+}
+
+header .log span{
+    font-size: xx-large;
+    font-weight: 900; 
+    color: #340b64;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+header .log .k{
+    font-family: 'Courier New', Courier, monospace;
+}
+
+header .log .c{
+    background-color: #340b64;
+    color: #fff;
+    border-radius: 50%;
+    font-size: xx-large;
+    padding:2px  5px;
+}
+
+
+header .search .form-control{
+    border-right: none;
+    border-radius: 10px 0px 0px 10px;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+header .search .form-control:focus{
+    outline: none;
+    box-shadow: none;
+}
+
+header .search .btn{
+    border-left: none;
+    border-radius: 0px 10px 10px 0px;
+    background-color: #00a1ef;
+}

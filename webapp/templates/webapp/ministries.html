@@ -1,0 +1,43 @@
+{% extends 'webapp/layout.html' %}
+{% load static %}
+{% load embed_video_tags %}
+{% block content %}
+
+
+<div class="container-fluid">
+    <div class="container tit">
+      <span>MINISTRIES</span>
+      <H2>OUR MINISTRIES</H2>
+      <div class="row">
+        {% for ministry in page_obj %}
+        <div class="col-lg-4">
+          <div class="card">
+            <img style="object-fit: cover;" src="{{ministry.imageURL}}" alt="">
+            <div class="card-body">
+              <div class="card-title">
+                <h4 class="ministrytitle">
+                  <a href="">
+                    {{ministry.ministry_name}}
+                  </a>
+                </h4>
+              </div>
+              <div class="card-text">
+                <p>{{ministry.decription|truncatechars:100}}</p>
+              <a class="btn btn-success min-more" href="{% url 'webapp:ministries' ministry.id %}">Read More</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% empty %}
+      <div class="empty">
+          <h5>Oops! No Content Yet</h5>
+      </div>
+        {% endfor %}
+      </div>
+  
+    </div>
+  
+  </div>
+
+
+{% endblock content %}

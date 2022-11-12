@@ -1,0 +1,196 @@
+/*
+ * Header Styles
+ */
+.site-header .top-header .container{
+    display: flex;
+    justify-content: space-between;
+}
+.site-header .bottom-header {
+    background-color: #4a4c4e;
+    *zoom: 1;
+    /* padding: 20px 0;  */
+}
+
+.site-header .bottom-header .container-fluid .main-navigation .menu{
+    /* display: flex;
+    justify-content: space-between; */
+}
+.site-header .bottom-header:after {
+    content: " ";
+    clear: both;
+    display: block;
+    overflow: hidden;
+    height: 0; }
+@media screen and (max-width: 640px) {
+    .site-header .bottom-header .social-links {
+        display: none; 
+    } 
+}
+
+#branding {
+    float: left; 
+}
+#branding .logo, #branding .logo-text {
+    display: inline-block;
+    vertical-align: middle; 
+}
+#branding .logo {
+    margin-right: 10px; 
+}
+#branding .site-title {
+    margin-bottom: 0;
+    font-size: 20px;
+    font-size: 1.25em; 
+}
+#branding .site-title a {
+    color: #768089; 
+}
+.right-section .phone, .right-section .search-form {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative; 
+}
+@media screen and (max-width: 640px) {
+    .right-section .phone {
+      display: none; 
+    } 
+}
+.right-section .phone img {
+    vertical-align: middle; 
+}
+.right-section .search-form {
+    margin: 10px 0;
+    margin-left: 20px; 
+}
+@media screen and (max-width: 480px) {
+    .right-section .search-form {
+        display: none; 
+    } 
+}
+.right-section .search-form input {
+    padding-right: 40px; 
+}
+.right-section .search-form button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: none; 
+}
+
+/* .main-navigation{
+    display: flex;
+    justify-content: space-between;
+} */
+.main-navigation .menu-toggle {
+    border: none;
+    background: none;
+    color: white;
+    font-size: 20px;
+    font-size: 1.25em;
+    display: none;
+    outline: none; 
+}
+@media screen and (max-width: 990px) {
+    .main-navigation .menu-toggle {
+        display: block; 
+    } 
+}
+@media screen and (min-width: 991px) {
+    .main-navigation .menu-toggle {
+        display: none; 
+    } 
+}
+.main-navigation .menu {
+    list-style: none;
+    /* display: inline-block; */
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+@media screen and (max-width: 990px) {
+    .main-navigation .menu {
+        display: none; 
+    } 
+}
+@media screen and (min-width: 991px) {
+    .main-navigation .menu {
+        display: block; 
+    } 
+}
+.main-navigation .menu li {
+    display: inline-block; 
+    justify-content: space-between;
+}
+.main-navigation .menu .menu-item a {
+    color: white;
+    padding: 0 10px;
+    border-right: 1px solid rgba(255, 255, 255, 0.3);
+    -webkit-transition: .3s ease;
+    transition: .3s ease; 
+    font-size: x-large;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.main-navigation .menu .menu-item .dropdown-item{
+    border-right: none;
+}
+.main-navigation .menu li a:hover {
+    color: #42a8f0; 
+    
+}
+.main-navigation .menu li.current-menu-item a {
+    color: #1392ec; 
+}
+  
+.social-links {
+    float: right; 
+}
+.social-links a {
+    width: 30px;
+    height: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    text-align: center;
+    line-height: 1.8;
+    color: white;
+    margin-left: 5px;
+    display: inline-block;
+    -webkit-transition: .3s ease;
+    transition: .3s ease; 
+}
+.social-links a:hover {
+    color: #1392ec;
+    border-color: #1392ec; 
+}
+  
+.mobile-navigation {
+    clear: both;
+    display: none; 
+}
+@media screen and (min-width: 991px) {
+    .mobile-navigation {
+        display: none !important; 
+    } 
+}
+.mobile-navigation .menu {
+    list-style: none; 
+}
+.mobile-navigation .menu a {
+    padding: 20px 0;
+    display: block;
+    color: white;
+}
+.mobile-navigation .menu .current-menu-item a {
+    color: #1392ec; 
+}
+  
+
+
+.show-on-hover:hover > ul.dropdown-menu {
+    display: block;    
+}
+
+.dropdown-menu{
+    background-color: #42a8f0;
+}

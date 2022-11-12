@@ -1,0 +1,47 @@
+{% extends 'webapp/layout.html' %}
+{% load static %}
+{% load embed_video_tags %}
+{% block content %}
+<div class="container-fluid sunday-celebration-tit">
+    <h1>Monthly Prayer Festivals</h1>
+</div>
+<div class="container sunday-celebration">
+    <div class="row">
+    {% for spirit in prayer_obj %}
+        <div class="col-lg-4 ms-1">
+            <a href="{% url 'webapp:sermon' spirit.id %}">
+            <img class="thumbnail" src=" {{spirit.imageURL}}" alt="">
+            <div class="box-element product">
+                <h6><strong>{{spirit.Speaker}}</strong></h6>
+                <hr>
+                
+                <p>{{spirit.sermon_title}} . {{spirit.date_added|date:'d M Y'}}</p>
+                <!-- <button data-product="{{product.id}}" data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button> -->
+                <!-- <a class="btn btn-outline-success" href="#">View</a> -->
+                <!-- <h4 style="float: right"><strong>${{product.price|floatformat:2}}</strong></h4> -->
+            </div>
+            </a>
+        </div>
+        {% empty %}
+    <div class="empty">
+        <h5>Oops! No Content Yet</h5>
+    </div>
+    {% endfor %}
+    </div>
+</div>
+<div class="den">
+    <span class="step-links">
+    {% if prayer_obj.has_previous %}
+        <a class="btn btn-info" href="?page=1">&laquo; first</a>
+        <a class="btn btn-info" href="?page={{ prayer_obj.previous_page_number }}">previous</a>
+    {% endif %}
+    <span class="current">
+        Page {{ prayer_obj.number }} of {{ prayer_obj.paginator.num_pages }}.
+    </span>
+    {% if prayer_obj.has_next %}
+        <a class="btn btn-info" href="?page={{ prayer_obj.next_page_number }}">next</a>
+        <a class="btn btn-info" href="?page={{ prayer_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+{% endblock %}
