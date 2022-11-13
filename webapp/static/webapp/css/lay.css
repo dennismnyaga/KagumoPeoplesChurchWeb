@@ -24,14 +24,9 @@ nav .collapse .navbar-nav .nav-item a{
 nav{
     background-color: #8b18a3;
 }
-.dropdown.dropdown-menu{
-    transition: all 0.5s;
-    overflow: hidden;
-    transform-origin: top center;
-    transform: scale(1,0);
-}
+
 .dropdown:hover .dropdown-menu{
-    transform: scale(1);
+   
     display: block;
     
 }
@@ -138,6 +133,24 @@ header .search .btn{
     color: black;
 
 }
+
+.about p .bol{
+    font-weight: 700;
+    font-size: large;
+    color: black;
+}
+.about img{
+    width: 300px;
+    height: 300px;
+    margin-right: 5px;
+    border-radius: 5px;
+}
+
+.about .confe{
+    float: left;
+    object-fit: fill;
+    
+}
 .he h1{
     font-weight: 600;
     color: #340b64;
@@ -163,10 +176,22 @@ header .search .btn{
 }
 
 .about .about_bo .hes{
-    background-color: #00a1ef;
+    background-color: #340b64;
+   
     padding-left: 2px;
     padding-top: 3px;
     padding-bottom: 3px;
     width: 20%; 
 
 }
+.about .about_bo .hes h3{
+    color: #fff;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    margin-left: 1px;
+    font-size: larger;
+    font-weight: 700;
+}
+
+
+
