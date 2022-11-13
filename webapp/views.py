@@ -192,3 +192,19 @@ def give(request, response):
 def lay(request):
     context = {}
     return render(request, 'webapp/layout.html', context)
+
+
+def statement_of_faith(request):
+    context = {}
+    return render(request, 'webapp/faith.html', context)
+
+
+
+def word_of_confession(request):
+    context = {}
+    return render(request, 'webapp/confession.html', context)
+
+
+def leaders(request):
+    context = {}
+    return render(request, 'webapp/leaders.html', context)

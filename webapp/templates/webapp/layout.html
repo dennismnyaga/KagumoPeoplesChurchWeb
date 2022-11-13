@@ -50,8 +50,15 @@
               <li class="nav-item">
                 <a class="nav-link" aria-current="page" href="/">Home</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'webapp:about' %}">About US</a>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown10" data-bs-toggle="dropdown" aria-expanded="false">About us</a>
+                <ul class="dropdown-menu" aria-labelledby="dropdown10">
+                  <li><a class="dropdown-item" href="{% url 'webapp:about' %}">About KPC</a></li>
+                  <li><a class="dropdown-item" href="{% url 'webapp:statement' %}">Statement of Faith</a></li>
+                  <li><a class="dropdown-item" href="{% url 'webapp:confession' %}">Word Confession</a></li>
+                  <li><a class="dropdown-item" href="{% url 'webapp:leadership' %}">Church Leadership</a></li>
+                  
+                </ul>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="dropdown10" data-bs-toggle="dropdown" aria-expanded="false">Sermons</a>

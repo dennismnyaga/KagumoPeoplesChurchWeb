@@ -113,3 +113,60 @@ header .search .btn{
     border-radius: 0px 10px 10px 0px;
     background-color: #00a1ef;
 }
+
+
+.about-us .col h2{
+    font-size: 67px;
+    font-weight: 100;
+    line-height: 1.2em;
+    font-family: "Amithen", Sans-serif;
+    text-align: center;
+}
+
+.about .about_box img{
+    float: left;
+    margin-right: 15px;
+}
+
+.about .about_box{
+    margin-bottom: 10em;
+}
+
+.about .about_box p .bol{
+    font-weight: 700;
+    font-size: large;
+    color: black;
+
+}
+.he h1{
+    font-weight: 600;
+    color: #340b64;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 14pt;
+}
+
+.hh .ms-2{
+    text-align: center;
+    text-decoration: underline;
+}
+
+.he p{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: justify;
+    font-size: 13px;
+    
+    line-height: 1.8em;
+}
+
+.about .about_bo{
+    border-bottom-style: solid;
+}
+
+.about .about_bo .hes{
+    background-color: #00a1ef;
+    padding-left: 2px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    width: 20%; 
+
+}

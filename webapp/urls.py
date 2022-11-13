@@ -20,9 +20,12 @@ urlpatterns = [
     path('department/<int:department_id>', views.departments, name='departments'),
     path('about us', views.aboutus, name='about'),
     path('quotes', views.quotes, name='quote'),
-    path('podcast', views.podcast, name='podcast'),
-    path('give', views.give, name='give'),
-    path('ministry', views.ministry, name='ministry'),
+    path('podcast/', views.podcast, name='podcast'),
+    path('give/', views.give, name='give'),
+    path('ministry/', views.ministry, name='ministry'),
+    path('statementoffaith/', views.statement_of_faith, name='statement'),
+    path('wordconfession/', views.word_of_confession, name='confession'),
+    path('churchleaders/', views.leaders, name='leadership'),
 
     # ====================
     path('lay/', views.lay, name='lay'),

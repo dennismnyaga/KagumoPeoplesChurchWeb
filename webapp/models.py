@@ -14,7 +14,6 @@ class Sermons(models.Model):
     sermon_title = models.CharField( max_length=200)
     Speaker = models.CharField(max_length=20)
     image = models.ImageField()
-    static_video = models.FileField(null=True, blank=True)
     video_url = EmbedVideoField()
     tag = models.ManyToManyField(Tag)
     date_added = models.DateTimeField(auto_now_add=True)
