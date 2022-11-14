@@ -219,3 +219,8 @@ header .search .btn{
 .more-sermon-btn a .btn{
     text-align: center;
 }
+
+footer .ff{
+    display: flex;
+    justify-content: space-between;
+}
