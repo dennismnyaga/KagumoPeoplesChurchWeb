@@ -7,7 +7,7 @@
     <h1>{{events.event_name}}</h1>
 </div>
 <div class="container imager">
-    <img src="{{events.imageURL}}" alt="">
+    <img style="width: 100%; height: 350px;" src="{{events.imageURL}}" alt="">
 </div>
 <div class="container event-des">
 <div class="row">
@@ -27,6 +27,8 @@
                   <p><strong>Organizer: </strong> <span>{{events.host}}</span></p>
                   <hr>
                   <p><strong>Start Date: </strong> <span>{{events.start_date}}</span></p>
+                  <hr>
+                  <p><strong>Starts in: </strong> <span>{{events.start_date|timeuntil}}</span></p>
                   <hr>
                   <p><strong>End Date: </strong> <span>{{events.end_date}}</span></p>
                   <hr>

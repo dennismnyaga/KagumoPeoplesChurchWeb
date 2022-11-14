@@ -5,7 +5,9 @@ from . import views
 
 app_name = 'webapp'
 urlpatterns = [
+   
     path('', views.home, name='home'),
+    # path('', views.nav_ministries),
     path('event/<int:event_id>/', views.event, name='event'),
     path('sermon/<int:sermon_id>/', views.sermon, name='sermon'),
     path('sermons', views.sermons, name='sermons'),
@@ -17,7 +19,7 @@ urlpatterns = [
     path('praiseHour', views.praise, name='praise'),
     path('VoiceofMySpirit', views.voice, name='voice'),
     path('ministry/<int:ministry_id>', views.ministries, name='ministries'),
-    path('department/<int:department_id>', views.departments, name='departments'),
+   
     path('about us', views.aboutus, name='about'),
     path('quotes', views.quotes, name='quote'),
     path('podcast/', views.podcast, name='podcast'),

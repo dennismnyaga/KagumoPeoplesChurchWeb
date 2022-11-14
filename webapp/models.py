@@ -152,26 +152,12 @@ class ServiceTimeline(models.Model):
         return self.service_name
 
 
-class VideoClips(models.Model):
-    title = models.CharField(max_length=200)
-    video_url = EmbedVideoField()
-    date_added = models.DateTimeField(auto_now_add=True)
-
-    class Meta:
-        verbose_name_plural = "Video Clips"
-
-    def __str__(self):
-        return self.title
 
 class Ministries(models.Model):
     ministry_name = models.CharField(max_length=200)
     decription = models.TextField()
-    latest_yt = EmbedVideoField()
     image = models.ImageField()
-    team_leader_name = models.CharField(max_length=200)
-    team_leader_message = models.TextField()
-    team_leader_image = models.ImageField()
-    gallery = models.ImageField()
+    
 
     class Meta:
         verbose_name_plural = "Ministries"
@@ -187,98 +173,12 @@ class Ministries(models.Model):
         except:
             url = ''
         return url
-    
-    @property
-    def team_leader_imageURL(self):
-        try:
-            url = self.team_leader_image.url
-        except:
-            url = ''
-        return url
-    
-    @property
-    def galleryURL(self):
-        try:
-            url = self.gallery.url
-        except:
-            url = ''
-        return url
 
 
 
 
 
-class Department(models.Model):
-    department_name = models.CharField(max_length=200)
-    decription = models.TextField()
-    image = models.ImageField()
-    team_leader_name = models.CharField(max_length=200)
-    team_leader_message = models.TextField()
-    team_leader_image = models.ImageField()
-    gallery = models.ImageField()
 
-    class Meta:
-        verbose_name_plural = "Department"
-
-
-    def __str__(self):
-        return self.department_name
-
-    @property
-    def imageURL(self):
-        try:
-            url = self.image.url
-        except:
-            url = ''
-        return url
-    
-    @property
-    def team_leader_imageURL(self):
-        try:
-            url = self.team_leader_image.url
-        except:
-            url = ''
-        return url
-    
-    @property
-    def galleryURL(self):
-        try:
-            url = self.gallery.url
-        except:
-            url = ''
-        return url
-
-
-
-
-
-class AboutUS(models.Model):
-    title = models.CharField(max_length=200)
-    decription = models.TextField()
-    image1 = models.ImageField(null=True, blank = True)
-    image2 = models.ImageField(null=True, blank = True)
-
-    class Meta:
-        verbose_name_plural = "About Us"
-
-
-    def __str__(self):
-        return self.title
-
-    @property
-    def image1URL(self):
-        try:
-            url = self.image1.url
-        except:
-            url = ''
-        return url
-    @property
-    def image2URL(self):
-        try:
-            url = self.image2.url
-        except:
-            url = ''
-        return url
 
 
 

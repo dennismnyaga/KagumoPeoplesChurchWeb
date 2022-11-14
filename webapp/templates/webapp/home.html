@@ -2,71 +2,53 @@
 {% load static %}
 {% load embed_video_tags %}
 {% block content %}
-
-<section class="slider_section">
-  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5" aria-label="Slide 6"></button>
-    </div>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="{% static 'webapp/images/314370898_508103958023737_4526971828186327704_n.jpg' %}" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="{% static 'webapp/images/314370898_508103958023737_4526971828186327704_n.jpg' %}" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="{% static 'webapp/images/314370898_508103958023737_4526971828186327704_n.jpg' %}" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="{% static 'webapp/images/314370898_508103958023737_4526971828186327704_n.jpg' %}" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="{% static 'webapp/images/314370898_508103958023737_4526971828186327704_n.jpg' %}" class="d-block w-100" alt="...">
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick-theme.min.css">
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.js"></script>
+<link type="text/css" rel="stylesheet" href="{% static 'webapp/css/home-min.css' %}">
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
   </div>
-  <!-- <div id="myCarousel" class="carousel slide banner-main" data-ride="carousel">
-      <ul class="carousel-indicators">
-          <li data-target="#myCarousel" data-slide-to="0" class=""></li>
-          <li data-target="#myCarousel" data-slide-to="1" class="active"></li>
-          <li data-target="#myCarousel" data-slide-to="2" class=""></li>
-      </ul>
-      <div class="carousel-inner">
-          <div class="carousel-item active">
-              <img class="first-slide" src="{% static 'webapp/images/271230453_2710603762419651_3169688484095334279_n.jpg' %}" alt="First slide">
-              
-          </div>
-          <div class="carousel-item">
-              <img class="second-slide" src="{% static 'webapp/images/271230453_2710603762419651_3169688484095334279_n.jpg' %}" alt="Second slide">
-             
-          </div>
-          <div class="carousel-item">
-              <img class="third-slide" src="{% static 'webapp/images/271230453_2710603762419651_3169688484095334279_n.jpg' %}" alt="Third slide">
-             
-          </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      {% for event in events|slice:1 %}
+      <img src="{{event.imageURL}}" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <a class="btn btn-info text-light" href="{% url 'webapp:event' event.id %}">READ MORE</a>
       </div>
-      <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-          <i class='fa fa-angle-left'></i>
-      </a>
-      <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-          <i class='fa fa-angle-right'></i>
-      </a>
-  </div> -->
-</section>
+      {% endfor %}
+    </div>
+    <div class="carousel-item">
+      {% for event in events|slice:'1:2' %}
+      <img src="{{event.imageURL}}" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <a class="btn btn-info text-light" href="{% url 'webapp:event' event.id %}">READ MORE</a>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="carousel-item">
+      {% for event in events|slice:'2:3' %}
+      <img src="{{event.imageURL}}" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+       
+        <a class="btn btn-info text-light" href="{% url 'webapp:event' event.id %}">READ MORE</a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
 
 <div class="container-fluid fluider">
 {% for item in sermon|slice:1 %}
@@ -109,63 +91,8 @@
   {% endfor %}
 </div>
 
-<!-- {% for item in sermon|slice:1 %}
-<div class="container-fluid">
-  <div class="container mb-2 f-card">
-      <img class="reference-thumb" src="{{item.imageURL}}" />
-      <div class="reference-content">
-              <div class="summ">
-                <small>Latest Sermon</small>
-              </div>
-              <div class="titl">
-                  <h2>{{item.sermon_title}}</h2>
-              </div>
-              <div class="linkss">
-                <a href="{% url 'webapp:sermon' item.id %}">
-                  <button class="button nn" >Watch Sermon</button>
-                </a>
-                  <a href="{% url 'webapp:sermons' %}">
-                    <button class="button mm" style="background-color: transparent; border-style: solid;color: white;">More Sermons</button>
-                  </a>
-              </div>
-      </div>
-      </div>
-    </div>
-    {% empty %}
-  <div class="empty">
-      <h5>Oops! No Content Yet</h5>
-  </div>
-{% endfor %} -->
 
-
-  <!-- {% for item in sermon|slice:1 %}
-  <div class="container-fluid">
-    <div class="container mb-2 f-card">
-        <img class="reference-thumb" src="{{item.imageURL}}" />
-        <div class="reference-content">
-                <div class="summ">
-                  <small>Latest Sermon</small>
-                </div>
-                <div class="titl">
-                    <h2>{{item.sermon_title}}</h2>
-                </div>
-                <div class="linkss">
-                  <a href="{% url 'webapp:sermon' item.id %}">
-                    <button class="button nn" >Watch Sermon</button>
-                  </a>
-                    <a href="{% url 'webapp:sermons' %}">
-                      <button class="button mm" style="background-color: transparent; border-style: solid;color: white;">More Sermons</button>
-                    </a>
-                </div>
-        </div>
-        </div>
-      </div>
-      {% empty %}
-    <div class="empty">
-        <h5>Oops! No Content Yet</h5>
-    </div>
-  {% endfor %} -->
-  <div class="container eve">
+  <!-- <div class="container eve">
     <h2>Upcoming Events</h2>
     <div class="ever">
     {% for event in events|slice:2 %}
@@ -196,51 +123,235 @@
     </div>
     {% endfor %}
     </div>
-  </div>
+  </div> -->
   
-  <!-- <div id="about" class="about">
-    <div class="container">
-        <div class="row">
-
-            <div class="col-xl-5 col-lg-5 col-md-5 co-sm-l2">
-                <div class="about_box">
-                    <h2>About Kagumo<br><strong class="black"> Peoples Church</strong></h2>
-                    <p>The earnest expectation of the creature waiteth for the manifestation of the sons of God. For even the whole of creation waits expectantly and longs earnestly for God’s sons to be made known, waiting for the revealing and the disclosing of their sonship. 
-                        Shekinah Sons is a grace....</p>
-                    <a href="{% url 'webapp:about' %}">Read More</a>
-                </div>
+ <div class="container cc">
+ 
+  <H2 class="text-centered">MINISTRIES</H2>
+  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="d-flex">
+        {% for ministry in ministries|slice:2 %}
+        <div class="card me-2">
+          <img src="{{ministry.imageURL}}" alt="">
+          <div class="card-body">
+            <div class="card-title">
+              <h4 class="ministrytitle">
+                <a href="">
+                  {{ministry.ministry_name}}
+                </a>
+              </h4>
             </div>
-          
-            <div class="col-xl-7 col-lg-7 col-md-7 co-sm-l2">
-                <div class="about_img">
-                    <figure><img style="border-radius: 10px;" src="{% static 'webapp/images/273010137_2735851786561515_2476901403527783610_n_m9PQ55H.jpg' %}" alt="img" /></figure>
-                </div>
-                
+            <div class="card-text">
+              <p>{{ministry.decription|truncatechars:100}}</p>
+            <a class="btn btn-success min-more" href="{% url 'webapp:ministries' ministry.id %}">Read More</a>
             </div>
+          </div>
         </div>
+       
+        {% endfor %}
+        </div>
+      </div>
+      <div class="carousel-item mt-2">
+        <div class="d-flex">
+        {% for ministry in ministries|slice:'2:4' %}
+        <div class="card me-2">
+          <img  src="{{ministry.imageURL}}" alt="">
+          <div class="card-body">
+            <div class="card-title">
+              <h4 class="ministrytitle">
+                <a href="">
+                  {{ministry.ministry_name}}
+                </a>
+              </h4>
+            </div>
+            <div class="card-text">
+              <p>{{ministry.decription|truncatechars:100}}</p>
+            <a class="btn btn-success min-more" href="{% url 'webapp:ministries' ministry.id %}">Read More</a>
+            </div>
+          </div>
+        </div>
+        
+        {% endfor %}
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="d-flex">
+        {% for ministry in ministries|slice:'4:6' %}
+        <div class="card me-2">
+          <img src="{{ministry.imageURL}}" alt="">
+          <div class="card-body">
+            <div class="card-title">
+              <h4 class="ministrytitle">
+                <a href="">
+                  {{ministry.ministry_name}}
+                </a>
+              </h4>
+            </div>
+            <div class="card-text">
+              <p>{{ministry.decription|truncatechars:100}}</p>
+            <a class="btn btn-success min-more" href="{% url 'webapp:ministries' ministry.id %}">Read More</a>
+            </div>
+          </div>
+        </div>
+       
+        {% endfor %}
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="d-flex">
+        {% for ministry in ministries|slice:'6:7' %}
+        <div class="card me-2">
+          <img src="{{ministry.imageURL}}" alt="">
+          <div class="card-body">
+            <div class="card-title">
+              <h4 class="ministrytitle">
+                <a href="">
+                  {{ministry.ministry_name}}
+                </a>
+              </h4>
+            </div>
+            <div class="card-text">
+              <p>{{ministry.decription|truncatechars:100}}</p>
+            <a class="btn btn-success min-more" href="{% url 'webapp:ministries' ministry.id %}">Read More</a>
+            </div>
+          </div>
+        </div>
+        
+        {% endfor %}
+      </div>
+      </div>
+      <div class="carousel-item">
+        <div class="d-flex">
+        {% for ministry in ministries|slice:"4:5" %}
+        <div class="card me-2">
+          <img src="{{ministry.imageURL}}" alt="">
+          <div class="card-body">
+            <div class="card-title">
+              <h4 class="ministrytitle">
+                <a href="">
+                  {{ministry.ministry_name}}
+                </a>
+              </h4>
+            </div>
+            <div class="card-text">
+              <p>{{ministry.decription|truncatechars:100}}</p>
+            <a class="btn btn-success min-more" href="{% url 'webapp:ministries' ministry.id %}">Read More</a>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <img src="{{ministry.imageURL}}" alt="">
+          <div class="card-body">
+            <div class="card-title">
+              <h4 class="ministrytitle">
+                <a href="">
+                  {{ministry.ministry_name}}
+                </a>
+              </h4>
+            </div>
+            <div class="card-text">
+              <p>{{ministry.decription|truncatechars:100}}</p>
+            <a class="btn btn-success min-more" href="{% url 'webapp:ministries' ministry.id %}">Read More</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      </div>
+      <div class="carousel-item">
+        <div class="d-flex">
+        {% for ministry in ministries|slice:"5:6" %}
+        <div class="card me-2">
+          <img  src="{{ministry.imageURL}}" alt="">
+          <div class="card-body">
+            <div class="card-title">
+              <h4 class="ministrytitle">
+                <a href="">
+                  {{ministry.ministry_name}}
+                </a>
+              </h4>
+            </div>
+            <div class="card-text">
+              <p>{{ministry.decription|truncatechars:100}}</p>
+            <a class="btn btn-success min-more" href="{% url 'webapp:ministries' ministry.id %}">Read More</a>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <img  src="{{ministry.imageURL}}" alt="">
+          <div class="card-body">
+            <div class="card-title">
+              <h4 class="ministrytitle">
+                <a href="">
+                  {{ministry.ministry_name}}
+                </a>
+              </h4>
+            </div>
+            <div class="card-text">
+              <p>{{ministry.decription|truncatechars:100}}</p>
+            <a class="btn btn-success min-more" href="{% url 'webapp:ministries' ministry.id %}">Read More</a>
+            </div>
+          </div>
+        </div>
+        
+        {% endfor %}
+      </div>
+      </div>
+      <div class="carousel-item">
+        <div class="d-flex">
+        {% for ministry in ministries|slice:"6:7" %}
+        <div class="card me-2">
+          <img  src="{{ministry.imageURL}}" alt="">
+          <div class="card-body">
+            <div class="card-title">
+              <h4 class="ministrytitle">
+                <a href="">
+                  {{ministry.ministry_name}}
+                </a>
+              </h4>
+            </div>
+            <div class="card-text">
+              <p>{{ministry.decription|truncatechars:100}}</p>
+            <a class="btn btn-success min-more" href="{% url 'webapp:ministries' ministry.id %}">Read More</a>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <img src="{{ministry.imageURL}}" alt="">
+          <div class="card-body">
+            <div class="card-title">
+              <h4 class="ministrytitle">
+                <a href="">
+                  {{ministry.ministry_name}}
+                </a>
+              </h4>
+            </div>
+            <div class="card-text">
+              <p>{{ministry.decription|truncatechars:100}}</p>
+            <a class="btn btn-success min-more" href="{% url 'webapp:ministries' ministry.id %}">Read More</a>
+            </div>
+          </div>
+        </div>
+        </div>
+        {% endfor %}
+      </div>
     </div>
-</div> -->
-
-
-<div class="container-fluid mt-3 mb-3">
-  <div class="container pray">
-    <div class="icon">
-      <i class="icofont-ui-love-add"></i>
-    </div>
-    <div class="sms">
-      <h2>
-        “Pray! And listen to God! You can do this alone, but find somebody to do it with you”</h2>
-    </div>
-    <div class="qq">
-      <span>Real Story Cross Journey from Anna Hampton</span>
-    </div>
-
+    <button class="carousel-control-prev  bb-t" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next  bb-t" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
   </div>
 </div>
 
 
 
-<div class="container-fluid">
+<!-- <div class="container-fluid">
   <div class="container tit">
     <span>MINISTRIES</span>
     <H2>OUR MINISTRIES</H2>
@@ -275,56 +386,22 @@
 
 </div>
 
+ -->
 
 
 
 
-<div class="container-fluid">
-  <div class="container tit">
-    <span>DEPARTMENTS</span>
-    <H2>OUR DEPARTMENTS</H2>
-    <div class="row">
-      {% for department in departments %}
-      <div class="col-lg-4">
-        <div class="card">
-          <img style="object-fit: cover;" src="{{department.imageURL}}" alt="">
-          <div class="card-body">
-            <div class="card-title">
-              <h4 class="ministrytitle">
-                <a href="">
-                  {{department.department_name}}
-                </a>
-              </h4>
-            </div>
-            <div class="card-text">
-              <p>{{department.decription|truncatechars:100}}</p>
-            <a class="btn btn-success min-more" href="{% url 'webapp:departments' department.id %}">Read More</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      {% empty %}
-    <div class="empty">
-        <h5>Oops! No Content Yet</h5>
-    </div>
-      {% endfor %}
-    </div>
 
-  </div>
+<div class="container mt-3">
 
-</div>
-
-
-
-
-  <div class="quote">
+  <div class="quote ms-2">
     <div class=" main-n">
         <div class="trendingMovies movies">
             <h4>Quotes</h4>
             <div class="cards ml-5">
                 {% for quotes in quote|slice:4 %}
                
-                    <div class="card" data-text=""> 
+                    <div class="card ms-2" data-text=""> 
                             
                               <img src="{{quotes.imageURL}}" alt="">
             
@@ -344,7 +421,8 @@
       </div>
     </div>
 </div>
+</div>
 
 
-  
+<script type="text/javascript" src="{% static 'webapp/js/home-min.js' %}"></script>
 {%  endblock content%}
