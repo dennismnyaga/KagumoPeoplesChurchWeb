@@ -16,7 +16,8 @@
   <div class="carousel-inner">
     <div class="carousel-item active">
       {% for event in events|slice:1 %}
-      <img src="{{event.imageURL}}" class="d-block w-100" alt="...">
+      <img src="{% static 'webapp/images/314355038_508089348025198_1418755646642207020_n.jpg' %}" alt="">
+      <!-- <img src="{{event.imageURL}}" class="d-block w-100" alt="..."> -->
       <div class="carousel-caption d-none d-md-block">
         <a class="btn btn-info text-light" href="{% url 'webapp:event' event.id %}">READ MORE</a>
       </div>
@@ -24,7 +25,8 @@
     </div>
     <div class="carousel-item">
       {% for event in events|slice:'1:2' %}
-      <img src="{{event.imageURL}}" class="d-block w-100" alt="...">
+      <img src="{% static 'webapp/images/314355038_508089348025198_1418755646642207020_n.jpg' %}" alt="">
+      <!-- <img src="{{event.imageURL}}" class="d-block w-100" alt="..."> -->
       <div class="carousel-caption d-none d-md-block">
         <a class="btn btn-info text-light" href="{% url 'webapp:event' event.id %}">READ MORE</a>
       </div>
@@ -32,7 +34,8 @@
     </div>
     <div class="carousel-item">
       {% for event in events|slice:'2:3' %}
-      <img src="{{event.imageURL}}" class="d-block w-100" alt="...">
+      <img src="{% static 'webapp/images/314355038_508089348025198_1418755646642207020_n.jpg' %}" alt="">
+      <!-- <img src="{{event.imageURL}}" class="d-block w-100" alt="..."> -->
       <div class="carousel-caption d-none d-md-block">
        
         <a class="btn btn-info text-light" href="{% url 'webapp:event' event.id %}">READ MORE</a>
@@ -403,8 +406,8 @@
                 {% for quotes in quote|slice:4 %}
                
                     <div class="card ms-2" data-text=""> 
-                            
-                              <img src="{{quotes.imageURL}}" alt="">
+                        <img src="{% static 'webapp/images/314355038_508089348025198_1418755646642207020_n.jpg' %}" alt="">
+                              <!-- <img src="{{quotes.imageURL}}" alt=""> -->
             
                     </div>
                     {% empty %}
