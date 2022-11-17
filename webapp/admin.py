@@ -12,6 +12,8 @@ admin.site.register(Quotes)
 admin.site.register(ServiceTimeline)
 admin.site.register(Ministries)
 admin.site.register(Giving)
+admin.site.register(MailMessage)
+admin.site.register(Subcribers)
 
 
 

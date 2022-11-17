@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+ 
     'webapp',
     'shopping',
     'usersreg',
@@ -43,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'embed_video',
+    
 ]
 
 MIDDLEWARE = [
@@ -145,3 +147,9 @@ django_heroku.settings(locals())
 
 LOGIN_URL = 'usersreg:login'
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'murildennis7@gmail.com'
+EMAIL_HOST_PASSWORD = 'plvwqqxwicmoossd'

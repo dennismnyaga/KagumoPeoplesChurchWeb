@@ -1,43 +1,44 @@
 from django.core.paginator import Paginator
-from django.shortcuts import render
-
+from django.shortcuts import render,redirect
+from django.contrib import messages
+from django.core.mail import send_mail
+from django_pandas.io import read_frame
+from .forms import *
 from .models import *
 
 # from .forms import NameForm
-from .forms import GiveForm
-from django.contrib.auth.decorators import login_required
+# from .forms import GiveForm
+# from django.contrib.auth.decorators import login_required
 
 
-
-
-def get_name(request):
-    if response.method == 'POST':
-        form = GiveForm(response.POST)
-        if form.is_valid():
-            author = form.save()
-            # Do something with the author (model instance)
-            return render(response, 'webapp/home.html', {'message': 'Successful'})
-        else:
-            return render(response, 'webapp/giving.html', {'form': form})
-
-    else:
-        form = AuthorForm()
-        return render(response, 'webapp/giving.html', {'form': form})
-
-# def nav_ministries(request):
-#     ministry = Ministries.objects.all()
-#     context = {'ministry': ministry}
-#     return render(request, 'webapp/layout.html', context)
 
 
 
 def home(request):
+    
+
+    form = SubscriberForm()
+
+    
+
+    if request.method == 'POST':
+        form = SubscriberForm(request.POST)
+        if form.is_valid():
+            instance = form.save(commit = False)
+            if Subcribers.objects.filter(email=instance.email).exists():
+                messages.warning(request, 'Email Already Exists!')
+            else:
+                instance.save()
+                messages.success(request, 'Successfuly Subscribed')
+                return redirect('/')
+    else:
+        form = SubscriberForm()
     sermon = Sermons.objects.order_by('-date_added')
     events = Events.objects.order_by('-date_added')
     ministries = Ministries.objects.all()
     
     quote = Quotes.objects.order_by('-date_added')
-    context = {'sermon':sermon, 'events':events, 'ministries': ministries, 'quote':quote}
+    context = {'sermon':sermon, 'events':events, 'ministries': ministries, 'quote':quote, 'form':form, 'forms':forms}
     return render(request, 'webapp/home.html', context)
 
 
@@ -178,20 +179,10 @@ def podcast(request):
 
 
 
-def give(request, response):
+def give(request):
     ministries = Ministries.objects.all()
-    if response.method == 'POST':
-        form = GiveForm(response.POST)
-        if form.is_valid():
-            author = form.save()
-            # Do something with the author (model instance)
-            return render(response, 'webapp/home.html', {'message': 'Successful'})
-        else:
-            return render(response, 'webapp/giving.html', {'form': form})
-
-    else:
-        form = AuthorForm()
-        return render(response, 'webapp/giving.html', {'form': form})
+   
+    return render(request, 'webapp/giving.html', {'ministries': ministries})
 
     # # podcast = Podcast.objects.order_by('-date_added')
     # # context = {'podcast': podcast}
@@ -204,13 +195,36 @@ def give(request, response):
 
 
 def lay(request):
+    emails = Subcribers.objects.all()
+    df = read_frame(emails, fieldnames=['email'])
+    mail_list = df['email'].values.tolist()
+    print(mail_list)
     ministries = Ministries.objects.all()
-    context = {'ministries':ministries}
-    return render(request, 'webapp/layout.html', context)
+    form = MailMessageForm()
+    if request.method == 'POST':
+        form = MailMessageForm(request.POST)
+        if form.is_valid():
+            form.save()
+            title = form.cleaned_data.get('title')
+            message = form.cleaned_data.get('content')
+            send_mail(
+                title,
+                message,
+                '',
+                mail_list,
+                fail_silently=False,
+            )
+            messages.success(request, 'Message has been sent to mail list!')
+            return redirect('webapp:lay')
+    else:
+        form = MailMessageForm()
+    context = {'ministries':ministries, 'form':form}
+    return render(request, 'webapp/ema.html', context)
 
 
 def statement_of_faith(request):
     ministries = Ministries.objects.all()
+    
     context = {'ministries':ministries}
     return render(request, 'webapp/faith.html', context)
 

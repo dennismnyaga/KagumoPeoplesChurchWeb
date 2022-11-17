@@ -2,6 +2,21 @@ from django.db import models
 from embed_video.fields import EmbedVideoField
 
 
+class Subcribers(models.Model):
+    email = models.EmailField()
+    date = models.DateTimeField(auto_now_add = True)
+
+    def __str__(self):
+        return self.email
+
+
+class MailMessage(models.Model):
+    title = models.CharField(max_length = 200)
+    content = models.TextField()
+    date = models.DateTimeField(auto_now_add = True)
+
+    def __str__(self):
+        return self.title
 
 
 class Tag(models.Model):
