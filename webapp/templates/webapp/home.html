@@ -17,8 +17,8 @@
   <div class="carousel-inner">
     <div class="carousel-item active">
       {% for event in events|slice:1 %}
-      <img src="{% static 'webapp/images/314355038_508089348025198_1418755646642207020_n.jpg' %}" class="d-block w-100" alt="">
-      <!-- <img src="{{event.imageURL}}" class="d-block w-100" alt="..."> -->
+      <!-- <img src="{% static 'webapp/images/314355038_508089348025198_1418755646642207020_n.jpg' %}" class="d-block w-100" alt=""> -->
+      <img src="{{event.imageURL}}" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
         <a class="btn btn-info text-light" href="{% url 'webapp:event' event.id %}">READ MORE</a>
       </div>
@@ -26,8 +26,8 @@
     </div>
     <div class="carousel-item">
       {% for event in events|slice:'1:2' %}
-      <img src="{% static 'webapp/images/273010137_2735851786561515_2476901403527783610_n_m9PQ55H.jpg' %}" class="d-block w-100" alt="">
-      <!-- <img src="{{event.imageURL}}" class="d-block w-100" alt="..."> -->
+      <!-- <img src="{% static 'webapp/images/273010137_2735851786561515_2476901403527783610_n_m9PQ55H.jpg' %}" class="d-block w-100" alt=""> -->
+      <img src="{{event.imageURL}}" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
         <a class="btn btn-info text-light" href="{% url 'webapp:event' event.id %}">READ MORE</a>
       </div>
@@ -35,8 +35,8 @@
     </div>
     <div class="carousel-item">
       {% for event in events|slice:'2:3' %}
-      <img src="{% static 'webapp/images/314419524_508089908025142_4864611536905315721_n.jpg' %}" class="d-block w-100" alt="">
-      <!-- <img src="{{event.imageURL}}" class="d-block w-100" alt="..."> -->
+      <!-- <img src="{% static 'webapp/images/314419524_508089908025142_4864611536905315721_n.jpg' %}" class="d-block w-100" alt=""> -->
+      <img src="{{event.imageURL}}" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
        
         <a class="btn btn-info text-light" href="{% url 'webapp:event' event.id %}">READ MORE</a>
@@ -398,46 +398,13 @@
 
 
 
-
-
-<div class="container mt-3">
-
-  <div class="quote ms-2">
-    <div class=" main-n">
-        <div class="trendingMovies movies">
-            <h4>Quotes</h4>
-            <div class="cards ml-5">
-                {% for quotes in quote|slice:4 %}
-               
-                    <div class="card ms-2" data-text=""> 
-                        <img src="{% static 'webapp/images/314355038_508089348025198_1418755646642207020_n.jpg' %}" alt="">
-                              <!-- <img src="{{quotes.imageURL}}" alt=""> -->
-            
-                    </div>
-                    {% empty %}
-                    <div class="empty">
-                        <h5>Oops! No Content Yet</h5>
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
-        
-        <div class="more-sermon-btn mt-1">
-            <a class="button-style" style="text-align: center;" href="{% url 'webapp:quote' %}">
-                <button class="btn btn-danger upp">More Quotes</button>
-            </a>
-      </div>
-    </div>
-</div>
-</div>
-<div class="container mb-2">
-  <section class="subscribe-area pb-50 pt-70">
+<div class="container mb-2 mt-2">
+  <section class="subscribe-area pt-5">
     <div class="container">
       <div class="row">
-    
               <div class="col-md-4">
                 <div class="subscribe-text mb-15">
-                  <span>JOIN OUR NEWSLETTER</span>
+                  <span>RECEIVE OUR NEWSLETTER</span>
                   <h2>subscribe newsletter</h2>
                 </div>
               </div>
@@ -452,7 +419,7 @@
                     <form action="" method="post">
                       {% csrf_token %}
                       {{form.email}}
-                      <button>subscribe <i class="fas fa-long-arrow-alt-right"></i></button>
+                      <button>subscribe <i class="fas fa-long-arrow-alt-right mt-2"></i></button>
                     </form>
                   </div>
                 </div>

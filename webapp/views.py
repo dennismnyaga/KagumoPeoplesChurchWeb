@@ -16,7 +16,7 @@ from .models import *
 
 def home(request):
     
-
+    # myFilter = OrderFilter(request.GET, queryset=orders)
     form = SubscriberForm()
 
     
